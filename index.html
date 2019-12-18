@@ -25,13 +25,13 @@
     </header>
 <div class="container">
     <!-- uncompleted task -->
-    <ul class="to-do">
+    <ul class="to-do" id="in-prog">
         <li>
-            this is an item
+            This is an item
 
             <div class="buttons">
-                <button class="remove"></button>
-                <button class="done"></button>
+                <button class="remove"><i id="remove" class="far fa-trash-alt fa-2x"></i></button>
+                <button class="check"><i id="check" class="fas fa-check-circle fa-2x"></i></button>
             </div>
             
         </li>
@@ -39,8 +39,16 @@
     </ul>
 
     <!-- completed task -->
-    <ul class="done">
-
+    <ul class="to-do" id="done">
+            <li>
+                    This is an item
+        
+                    <div class="buttons">
+                        <button class="remove"><i id="remove" class="far fa-trash-alt fa-2x"></i></button>
+                        <button class="done-check"><i id="done-check" class="fas fa-check-circle fa-2x"></i></button>
+                    </div>
+                    
+                </li>
     </ul>
 </div>
 

@@ -93,8 +93,9 @@ ul.to-do li {
     float: left;
     box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
     list-style-type: none;
-    margin: 0 0 10px 0;
-    padding: 0 0px 0px 20px;
+    margin: 0 100px 10px 0;
+    padding: 0 100px 0px 15px;
+    box-sizing: border-box;
 }
 
 ul.to-do li:last-of-type {
@@ -107,6 +108,7 @@ ul.to-do li .buttons{
     position: absolute;
     top: 0;
     right: 0;
+    float: left;
 }
 
 ul.to-do li .buttons button {
@@ -118,10 +120,14 @@ ul.to-do li .buttons button {
     box-shadow: none;
     outline: none;
     position: relative;
+    cursor: pointer;
 
     -webkit-appearance: none;
 
 }
+
+
+
 
 ul.to-do li .buttons button:last-of-type:before {
     content: '';
@@ -133,6 +139,42 @@ ul.to-do li .buttons button:last-of-type:before {
     background: black   ;
 
 }
+
+ul.to-do li .buttons button.remove i#remove {
+    color: black;
+
+}
+
+
+ul.to-do li .buttons button.remove i#remove:hover {
+    transition: .03s ease;
+    color: rgb(184, 17, 39);
+
+}
+
+ul.to-do#done li .buttons button.remove i#remove:hover {
+    transition: .03s ease;
+    color: rgb(184, 17, 39);
+
+}
+
+ul.to-do li .buttons button.check i#check:hover {
+    color: #3B945E
+
+}
+
+
+ul.to-do#done li .buttons button.done-check i#done-check {
+    color: #3B945E
+
+}
+
+ul.to-do#done li .buttons button.done-check i#done-check:hover {
+    color: #022140
+
+}
+
+
 
 .container {
     width: 100%;
