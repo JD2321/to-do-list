@@ -126,6 +126,10 @@ ul.to-do li .buttons button {
 
 }
 
+div.border-line {
+    border: 3px solid black;
+}
+
 
 
 
