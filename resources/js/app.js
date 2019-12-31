@@ -9,7 +9,7 @@
 
 
 var button = document.getElementById("add-item");
-var doneButton = document.querySelector("#check");
+var doneButton = document.body.querySelectorAll(".check");
 
 //button icons
 var checkIcon = '<i id="check" class="fas fa-check-circle fa-2x"></i>';
@@ -34,6 +34,7 @@ function processClick() {
     }
 
  input.value = "";
+ console.log(doneButton);
 }
 
 //add item to array
@@ -45,7 +46,8 @@ function addItem(text) {
 
 //****
 function verifyCheckButton(doneButton) {
-    if (document.body.contains(doneButton)) {
+    var doneButton = document.body.querySelectorAll(".check");
+    if (document.body.contains("#check")) {
         doneButton.addEventListener("click", processCheck);
         console.log("click button!")
     } else {
