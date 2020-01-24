@@ -1,15 +1,17 @@
 //THINGS TO COMPLETE
-//add remove button functionality 
+//add remove button functionality
+//make code for done verify work for delete button 
 
-//add done check button functionality
+//add make check button complete task
 
 //****** = items affecting current task
 
 
 
 
-var button = document.getElementById("add-item");
+var addButton = document.getElementById("add-item");
 var doneButton = document.body.querySelectorAll(".check");
+var checkButtons = document.getElementById("check");
 
 //button icons
 var checkIcon = '<i id="check" class="fas fa-check-circle fa-2x"></i>';
@@ -34,6 +36,8 @@ function processClick() {
     }
 
  input.value = "";
+ verifyCheckButton();
+
  console.log(doneButton);
 }
 
@@ -44,15 +48,35 @@ function addItem(text) {
     console.log(toDoListArr);
 }
 
+function activateButtons(className) {
+    var test = "'" + "'";
+    for (var i = 0; i < className.length; i++) {
+        className[i].addEventListener('click', processCheck, false);
+    }
+};
+
 //****
-function verifyCheckButton(doneButton) {
-    var doneButton = document.body.querySelectorAll(".check");
-    if (document.body.contains("#check")) {
-        doneButton.addEventListener("click", processCheck);
+function verifyCheckButton() {
+    var doneButton = document.getElementsByClassName("check");
+    var todoList = document.getElementById("in-prog");
+ 
+    if (doneButton) {
+        activateButtons(doneButton);
         console.log("click button!")
     } else {
         console.log("no click button!")
     };
+
+    var classname = document.getElementsByClassName("classname");
+
+        var myFunction = function() {
+            var attribute = this.getAttribute("data-myattribute");
+            alert(attribute);
+        };
+
+        for (var i = 0; i < classname.length; i++) {
+            classname[i].addEventListener('click', myFunction, false);
+        }
 }
 
 
@@ -83,6 +107,8 @@ function createItem(text) {
 
 }
 
+var checkButtons = document.getElementById("check");
+
 //******
 function searchStringInArray (str, strArray) {
     for (var j=0; j<strArray.length; j++) {
@@ -99,8 +125,9 @@ function processCheck() {
 }
 
 //event listener
-button.addEventListener("click", processClick);
-verifyCheckButton();
+addButton.addEventListener("click", processClick);
+
+
 
 
 console.log(searchStringInArray("test", toDoListArr));
