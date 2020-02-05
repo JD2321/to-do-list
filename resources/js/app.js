@@ -1,8 +1,11 @@
 //THINGS TO COMPLETE
+
+
+//fix list generation
+// add list sections with CSS
 //add remove button functionality
 //make code for done verify work for delete button 
 
-//add make check button complete task
 
 //****** = items affecting current task
 
@@ -121,13 +124,23 @@ function searchStringInArray (str, strArray) {
 //****** 
 //when check button is clicked item moves to done list
 function processCheck() {
- console.log("clicked!")
+//variables
+ var toDoList = document.getElementById("in-prog");   
+ var taskName = this.parentElement.parentElement.innerText;
+ var arrValue = searchStringInArray(taskName, toDoListArr);
+
+ //pull info from to-do and add to done list
+ toDoListArr.splice(arrValue, 1);
+ doneItemsArr.unshift(taskName);
+ toDoList.innerHTML = "";
+ toDoListArr.forEach(createItem);
+ verifyCheckButton();
+
+ console.log(doneItemsArr);
+ doneItemsArr.forEach(createItem);
+
 }
 
 //event listener
 addButton.addEventListener("click", processClick);
 
-
-
-
-console.log(searchStringInArray("test", toDoListArr));
