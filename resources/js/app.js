@@ -1,8 +1,9 @@
 //THINGS TO COMPLETE
 
 
-//fix list generation
-// add list sections with CSS
+
+//create logic for uncheck
+// edit list sections with CSS
 //add remove button functionality
 //make code for done verify work for delete button 
 
@@ -21,7 +22,7 @@ var checkIcon = '<i id="check" class="fas fa-check-circle fa-2x"></i>';
 var removeIcon = '<i id="remove" class="far fa-trash-alt fa-2x"></i>';
 
 //arrays
-var toDoListArr = ["test"]
+var toDoListArr = []
 var doneItemsArr = []
 
 //button click
@@ -51,35 +52,35 @@ function addItem(text) {
     console.log(toDoListArr);
 }
 
-function activateButtons(className) {
-    var test = "'" + "'";
-    for (var i = 0; i < className.length; i++) {
-        className[i].addEventListener('click', processCheck, false);
+function activateButtons(className, isDone) {
+    
+    if (isDone) {
+        for (var i = 0; i < className.length; i++) {
+            className[i].addEventListener('click', processCheck, false);
+        }
+    } else {
+        for (var i = 0; i < className.length; i++) {
+            className[i].addEventListener('click', processUncheck, false);
+        }
     }
 };
 
 //****
 function verifyCheckButton() {
     var doneButton = document.getElementsByClassName("check");
+    var uncheckButton = document.getElementsByClassName("uncheck");
     var todoList = document.getElementById("in-prog");
  
-    if (doneButton) {
-        activateButtons(doneButton);
+    if (doneButton && uncheckButton) {
+        activateButtons(doneButton, true);
+        activateButtons(uncheckButton, false);
         console.log("click button!")
-    } else {
+    } else if (doneButton){
+        activateButtons(doneButton, true);
         console.log("no click button!")
     };
 
-    var classname = document.getElementsByClassName("classname");
-
-        var myFunction = function() {
-            var attribute = this.getAttribute("data-myattribute");
-            alert(attribute);
-        };
-
-        for (var i = 0; i < classname.length; i++) {
-            classname[i].addEventListener('click', myFunction, false);
-        }
+    
 }
 
 
@@ -109,6 +110,31 @@ function createItem(text) {
     list.appendChild(item);
 
 }
+function createDoneItem(text) {
+
+    var list = document.getElementById('done');
+
+    var item = document.createElement('li');
+    item.innerText = text;
+
+    var buttons = document.createElement('div');
+    buttons.classList.add('buttons');
+
+    var remove = document.createElement('button');
+    remove.classList.add('remove');
+    remove.innerHTML = removeIcon;
+
+    var check = document.createElement('button');
+    check.classList.add('uncheck')
+    check.innerHTML = checkIcon;
+
+    buttons.appendChild(remove);
+    buttons.appendChild(check);
+    item.appendChild(buttons);
+
+    list.appendChild(item);
+
+}
 
 var checkButtons = document.getElementById("check");
 
@@ -125,7 +151,8 @@ function searchStringInArray (str, strArray) {
 //when check button is clicked item moves to done list
 function processCheck() {
 //variables
- var toDoList = document.getElementById("in-prog");   
+ var toDoList = document.getElementById("in-prog"); 
+ var doneList = document.getElementById("done");  
  var taskName = this.parentElement.parentElement.innerText;
  var arrValue = searchStringInArray(taskName, toDoListArr);
 
@@ -134,11 +161,18 @@ function processCheck() {
  doneItemsArr.unshift(taskName);
  toDoList.innerHTML = "";
  toDoListArr.forEach(createItem);
- verifyCheckButton();
+ 
 
  console.log(doneItemsArr);
- doneItemsArr.forEach(createItem);
+ doneList.innerHTML = "";
+ doneItemsArr.forEach(createDoneItem);
 
+ verifyCheckButton();
+
+}
+
+function processUncheck() {
+    console.log("Uncheck");
 }
 
 //event listener
