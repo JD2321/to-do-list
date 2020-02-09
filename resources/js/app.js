@@ -2,10 +2,12 @@
 
 
 
-//create logic for uncheck
+
+//add uncheck css
 // edit list sections with CSS
+//
 //add remove button functionality
-//make code for done verify work for delete button 
+
 
 
 //****** = items affecting current task
@@ -52,9 +54,16 @@ function addItem(text) {
     console.log(toDoListArr);
 }
 
+//activate buttons
 function activateButtons(className, isDone) {
-    
-    if (isDone) {
+
+    if (isDone === "trash") {
+       
+        for (var i = 0; i < className.length; i++) {
+            className[i].addEventListener('click', processTrash, false);
+        }
+        
+    } else if (isDone) {
         for (var i = 0; i < className.length; i++) {
             className[i].addEventListener('click', processCheck, false);
         }
@@ -63,22 +72,25 @@ function activateButtons(className, isDone) {
             className[i].addEventListener('click', processUncheck, false);
         }
     }
+
 };
 
-//****
+//check for and activate buttons
 function verifyCheckButton() {
     var doneButton = document.getElementsByClassName("check");
     var uncheckButton = document.getElementsByClassName("uncheck");
+    var trashButton = document.getElementsByClassName("remove");
     var todoList = document.getElementById("in-prog");
  
+    //activate check buttons
     if (doneButton && uncheckButton) {
         activateButtons(doneButton, true);
         activateButtons(uncheckButton, false);
-        console.log("click button!")
+        activateButtons(trashButton, "trash");
     } else if (doneButton){
         activateButtons(doneButton, true);
-        console.log("no click button!")
     };
+
 
     
 }
@@ -110,6 +122,8 @@ function createItem(text) {
     list.appendChild(item);
 
 }
+
+//creates done list 
 function createDoneItem(text) {
 
     var list = document.getElementById('done');
@@ -138,7 +152,7 @@ function createDoneItem(text) {
 
 var checkButtons = document.getElementById("check");
 
-//******
+//pull specific string from array
 function searchStringInArray (str, strArray) {
     for (var j=0; j<strArray.length; j++) {
         if (strArray[j].match(str)) return j;
@@ -147,14 +161,15 @@ function searchStringInArray (str, strArray) {
     
 }
 
-//****** 
+
+
 //when check button is clicked item moves to done list
 function processCheck() {
 //variables
  var toDoList = document.getElementById("in-prog"); 
  var doneList = document.getElementById("done");  
  var taskName = this.parentElement.parentElement.innerText;
- var arrValue = searchStringInArray(taskName, toDoListArr);
+ var arrValue = searchStringInArray(taskName, doneItemsArr);
 
  //pull info from to-do and add to done list
  toDoListArr.splice(arrValue, 1);
@@ -171,8 +186,31 @@ function processCheck() {
 
 }
 
+//when button is clicked move to to-do list
 function processUncheck() {
-    console.log("Uncheck");
+    var toDoList = document.getElementById("in-prog"); 
+    var doneList = document.getElementById("done");  
+    var taskName = this.parentElement.parentElement.innerText;
+    var arrValue = searchStringInArray(taskName, toDoListArr);
+   
+    //pull info from to-do and add to done list
+    doneItemsArr.splice(arrValue, 1);
+    toDoListArr.unshift(taskName);
+    toDoList.innerHTML = "";
+    toDoListArr.forEach(createItem);
+    
+    doneList.innerHTML = "";
+    doneItemsArr.forEach(createDoneItem);
+   
+    verifyCheckButton();
+}
+
+function processTrash() {
+    var toDoList = document.getElementById("in-prog"); 
+    var doneList = document.getElementById("done"); 
+    var taskName = this.parentElement.parentElement.innerText;
+
+    console.log("trash!")
 }
 
 //event listener
