@@ -98,6 +98,11 @@ ul.to-do li {
     box-sizing: border-box;
 }
 
+ul.to-do#done li {
+    color: rgba(0, 0, 0, 0.8);
+    background: gray;
+}
+
 ul.to-do li:last-of-type {
     margin: 0;
 }
@@ -168,12 +173,12 @@ ul.to-do li .buttons button.check i#check:hover {
 }
 
 
-ul.to-do#done li .buttons button.done-check i#done-check {
+ul.to-do#done li .buttons button.uncheck i#check{
     color: #3B945E
 
 }
 
-ul.to-do#done li .buttons button.done-check i#done-check:hover {
+ul.to-do#done li .buttons button.uncheck i#check:hover{
     color: #022140
 
 }
