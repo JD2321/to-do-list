@@ -3,17 +3,7 @@
 
 
 
-//add uncheck css
 // edit list sections with CSS
-//
-//add remove button functionality
-
-
-
-//****** = items affecting current task
-
-
-
 
 var addButton = document.getElementById("add-item");
 var doneButton = document.body.querySelectorAll(".check");
@@ -169,11 +159,11 @@ function processCheck() {
  var toDoList = document.getElementById("in-prog"); 
  var doneList = document.getElementById("done");  
  var taskName = this.parentElement.parentElement.innerText;
- var arrValue = searchStringInArray(taskName, doneItemsArr);
+ var arrValue = searchStringInArray(taskName, toDoListArr);
 
  //pull info from to-do and add to done list
  toDoListArr.splice(arrValue, 1);
- doneItemsArr.unshift(taskName);
+ doneItemsArr.push(taskName);
  toDoList.innerHTML = "";
  toDoListArr.forEach(createItem);
  
@@ -191,11 +181,11 @@ function processUncheck() {
     var toDoList = document.getElementById("in-prog"); 
     var doneList = document.getElementById("done");  
     var taskName = this.parentElement.parentElement.innerText;
-    var arrValue = searchStringInArray(taskName, toDoListArr);
+    var arrValue = searchStringInArray(taskName, doneItemsArr);
    
     //pull info from to-do and add to done list
     doneItemsArr.splice(arrValue, 1);
-    toDoListArr.unshift(taskName);
+    toDoListArr.push(taskName);
     toDoList.innerHTML = "";
     toDoListArr.forEach(createItem);
     
@@ -208,9 +198,28 @@ function processUncheck() {
 function processTrash() {
     var toDoList = document.getElementById("in-prog"); 
     var doneList = document.getElementById("done"); 
+    var listName = this.parentElement.parentElement.parentElement.id;
     var taskName = this.parentElement.parentElement.innerText;
+    
 
-    console.log("trash!")
+    if (listName === "in-prog") {
+        var arrValue = searchStringInArray(taskName, toDoListArr);
+        toDoListArr.splice(arrValue, 1);
+
+        toDoList.innerHTML = "";
+        toDoListArr.forEach(createItem);
+        verifyCheckButton();
+        console.log(toDoListArr);
+    } else {
+        var arrValue = searchStringInArray(taskName, doneItemsArr);
+        doneItemsArr.splice(arrValue, 1);
+        doneList.innerHTML = "";
+        doneItemsArr.forEach(createDoneItem);
+        verifyCheckButton();
+        console.log(doneItemsArr);
+    }
+
+    console.log(listName);
 }
 
 //event listener
