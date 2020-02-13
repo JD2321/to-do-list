@@ -135,6 +135,14 @@ div.border-line {
     border: 3px solid black;
 }
 
+div.to-do-banner {
+   color: white;
+}
+
+div.done-banner {
+    color: white;
+}
+
 
 
 
