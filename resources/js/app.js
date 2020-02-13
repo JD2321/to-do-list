@@ -1,10 +1,8 @@
-//THINGS TO COMPLETE
+//global
+var input = document.getElementById("item");
 
 
-
-
-// edit list sections with CSS
-
+//buttons
 var addButton = document.getElementById("add-item");
 var doneButton = document.body.querySelectorAll(".check");
 var checkButtons = document.getElementById("check");
@@ -140,8 +138,6 @@ function createDoneItem(text) {
 
 }
 
-var checkButtons = document.getElementById("check");
-
 //pull specific string from array
 function searchStringInArray (str, strArray) {
     for (var j=0; j<strArray.length; j++) {
@@ -195,6 +191,7 @@ function processUncheck() {
     verifyCheckButton();
 }
 
+//delete item
 function processTrash() {
     var toDoList = document.getElementById("in-prog"); 
     var doneList = document.getElementById("done"); 
@@ -222,6 +219,11 @@ function processTrash() {
     console.log(listName);
 }
 
-//event listener
+//event listeners
 addButton.addEventListener("click", processClick);
+input.addEventListener('keyup',function(e){
+    if (e.keyCode === 13) {
+    processClick();
+  }
+});
 
