@@ -1,0 +1,24 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "Basic to-do list built with html, css and javascript.",
+  "main": "index.js",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node resources/js/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JD2321/to-do-list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JD2321/to-do-list/issues"
+  },
+  "homepage": "https://github.com/JD2321/to-do-list#readme"
+}
