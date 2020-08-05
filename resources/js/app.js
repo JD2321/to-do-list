@@ -1,27 +1,11 @@
 /*game plan
 - fix node server 
-    - figure out how to run index.html(setting up server as req on index?)
     - create calls 
 - create mysql database
-    - create schema for db 
-- connect database to to-do list
+    - create schema for db
 - enable app to edit db items 
 
 */
-
-
-//mysql connection
-
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'root',
-  database : 'my_db'
-});
- 
-connection.connect();
-
 
 
 //global

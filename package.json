@@ -4,6 +4,7 @@
   "description": "Basic to-do list built with html, css and javascript.",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.17.1",
     "mysql": "^2.18.1"
   },
   "devDependencies": {},
