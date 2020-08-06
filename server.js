@@ -14,7 +14,7 @@ const db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'root',
-  database : 'to-do-list'
+  database : 'task_app'
 });
 
 db.connect((err) =>  {
@@ -28,11 +28,24 @@ db.connect((err) =>  {
 //resources 
 app.use('/static', express.static(path.join(__dirname, '/resources')));
 
-
+//load home page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/index.html'))
 });
 
+//add task
+app.get('/add-task', (req, res) => {
+
+})
+//edit task
+app.get('/edit-task', (req, res) => {
+  
+})
+//delete task 
+app.get('/delete-task', (req, res) => {
+  
+})
+
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`listening at http://localhost:${port}`)
 });

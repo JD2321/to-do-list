@@ -4,6 +4,7 @@
 - create mysql database
     - create schema for db
 - enable app to edit db items 
+- create api to handle database requests 
 
 */
 
